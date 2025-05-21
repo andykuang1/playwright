@@ -1,4 +1,4 @@
-import {test, epxect} from '@playwright/test';
+import {test, expect} from '@playwright/test';
 
 test('simple test', async ({page}) => {
 	await page.goto('https://myanimelist.net/');
