@@ -1,5 +1,5 @@
-import {Page} from '@playwright/test';
-import {BasePage} from './base.page';
+import {Locator, Page} from '@playwright/test';
+const {BasePage} = require('./base.page');
 
 export class HomePage extends BasePage {
 
@@ -10,3 +10,5 @@ export class HomePage extends BasePage {
   }
   
 }
+
+module.exports = {HomePage};
