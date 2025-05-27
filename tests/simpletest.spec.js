@@ -3,7 +3,7 @@ import {test, expect, Page} from '@playwright/test';
 const {HomePage} = require('../pages/home.page');
 const {AnimePage} = require('../pages/anime.page');
 
-const {SearchBar} = require('../components/searchBar.component');
+const {SearchBar} = require('../components/searchbar.component');
 
 test.beforeEach(async ({page}) => {
 	await page.goto('https://myanimelist.net/');
