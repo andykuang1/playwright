@@ -12,16 +12,20 @@ test.beforeEach(async ({page}) => {
 	await expect(page).toHaveTitle(/MyAnimeList\.net/);
 });
 
-test('simple test', async ({page}) => {
-	const homePage = new HomePage(page);
-	await expect(homePage.bannerLocator).toBeVisible();
-	await homePage.bannerOKButton.click();
-	await expect(homePage.bannerLocator).not.toBeVisible();
+test.describe('Clear banner and execute search', () => {
+	test('Go to home page and clear banner', async ({page}) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.bannerLocator).toBeVisible();
+		await homePage.bannerOKButton.click();
+		await expect(homePage.bannerLocator).not.toBeVisible();
+	});
 
-	const searchBar = new SearchBar(page);
-	await searchBar.inputSearchText('Shingeki no Kyojin');
-	await searchBar.clickSearchResult('Shingeki no Kyojin Season 3 Part 2');
+	test ('Execute a search', async ({page}) => {
+		const searchBar = new SearchBar(page);
+		await searchBar.inputSearchText('Shingeki no Kyojin');
+		await searchBar.clickSearchResult('Shingeki no Kyojin Season 3 Part 2');
 
-	const animePage = new AnimePage(page);
-	await expect(animePage.body).toBeVisible();
+		const animePage = new AnimePage(page);
+		await expect(animePage.body).toBeVisible();
+	});
 });
