@@ -1,7 +1,7 @@
 import {Locator, Page} from '@playwright/test';
 const {BaseComponent} = require('./base.component');
 
-export class SearchBar extends BaseComponent {
+class SearchBar extends BaseComponent {
 
   constructor(page) {
     super(page);
