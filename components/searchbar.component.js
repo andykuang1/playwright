@@ -1,7 +1,7 @@
 import {Locator, Page} from '@playwright/test';
 const {BaseComponent} = require('./base.component');
 
-class SearchBar extends BaseComponent {
+class MenuBar extends BaseComponent {
 
   constructor(page) {
     super(page);
@@ -20,4 +20,4 @@ class SearchBar extends BaseComponent {
 
 }
 
-module.exports = {SearchBar};
+module.exports = {MenuBar};
