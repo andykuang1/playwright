@@ -1,7 +1,7 @@
 import {Locator, Page} from '@playwright/test';
 const {BasePage} = require('./base.page');
 
-export class HomePage extends BasePage {
+class HomePage extends BasePage {
 
   constructor(page) {
     super(page);
