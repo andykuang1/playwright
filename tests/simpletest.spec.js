@@ -2,9 +2,10 @@ import {test, expect, Page} from '@playwright/test';
 
 const {HomePage} = require('../pages/home.page');
 const {AnimePage} = require('../pages/anime.page');
+const {AnimeSearchPage} = require('../pages/animesearch.page');
 
 const {CookieBanner} = require ('../components/cookiebanner.component');
-const {MenuBar} = require('../components/searchbar.component');
+const {MenuBar} = require('../components/menubar.component');
 
 test.beforeEach(async ({page}) => {
 	await page.goto('https://myanimelist.net/');
@@ -26,7 +27,7 @@ test.describe('Cookie Banner tests', () => {
 	});
 });
 
-test.describe('Execute a search on the menu bar', () => {
+test.describe('Menu Bar tests', () => {
 	test ('Execute a search', async ({page}) => {
 		const menuBar = new MenuBar(page);
 		await menuBar.inputSearchText('Shingeki no Kyojin');
@@ -34,5 +35,13 @@ test.describe('Execute a search on the menu bar', () => {
 
 		const animePage = new AnimePage(page);
 		await expect(animePage.body).toBeVisible();
+	});
+
+	test('Navigate to anime search page', async ({page}) => {
+		const menuBar = new MenuBar(page);
+		await menuBar.hoverTab('Anime');
+		await menuBar.clickTabItem('Anime Search');
+		const animeSearchPage = new AnimeSearchPage(page);
+		await expect(animeSearchPage.headerLocator).toBeVisible();
 	});
 });
